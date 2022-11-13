@@ -1,0 +1,51 @@
+.movie-img {
+  vertical-align: middle;
+  margin-right: .5rem;
+}
+
+[dir='rtl'] .movie-img {
+  margin-right: 0;
+  margin-left: .5rem;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+
+  .logo {
+    width: 5rem;
+    align-self: center;
+    margin-bottom: 1rem;
+  }
+
+  .title,
+  .subtitle {
+    text-align: center;
+  }
+
+  .formGroup {
+    display: flex;
+    gap: 1rem;
+    width: 100%;
+
+    mat-form-field {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+  }
+
+  .button {
+    width: 100%;
+    color: #fff;
+  }
+}
+
+
+@media screen and (max-width: 480px) {
+  .content {
+    .formGroup {
+      flex-direction: column;
+    }
+  }
+}

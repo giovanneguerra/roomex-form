@@ -1,0 +1,52 @@
+<div class="content">
+  <img class="logo" alt="Roomex logo"  src="../../../assets/images/logo.svg" />
+  <h1 class="title">Welcome to Roomex form</h1>
+  <p class="subtitle">Please enter your information please</p>
+  <form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+    <div class="formGroup">
+      <mat-form-field appearance="standard" >
+        <mat-label>Name</mat-label>
+        <input matInput placeholder="Name" type="text" name="name" formControlName="name">
+        <mat-error *ngIf="this.profileForm.get('name')?.invalid">{{getErrorMessage('name', 'You may not insert numbers', 'You must enter a name')}}</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="standard" >
+        <mat-label>Username</mat-label>
+        <input matInput placeholder="Username" type="email" name="username" formControlName="username">
+        <mat-error *ngIf="this.profileForm.get('username')?.invalid">{{getErrorMessage('username', 'You must enter a valid email')}}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="formGroup">
+      <mat-form-field appearance="fill">
+        <mat-label>Country</mat-label>
+        <mat-select formControlName="country" >
+          <mat-option *ngFor="let country of countries" [value]="country.value">
+            {{country.viewValue}}
+          </mat-option>
+        </mat-select>
+        <mat-error *ngIf="this.profileForm.get('country')?.invalid">{{getErrorMessage('country', 'You must select a Country')}}</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="standard" >
+        <mat-label>Post Code</mat-label>
+        <input matInput placeholder="postCode" type="text" name="postCode" formControlName="postCode">
+        <mat-error *ngIf="this.profileForm.get('postCode')?.invalid">{{getErrorMessage('postCode', 'You must enter a valid post code from 6 to 10 characters', 'You must enter a valid post code for the UK')}}</mat-error>
+      </mat-form-field>
+    </div>
+    <div class="formGroup">
+      <mat-form-field class="example-full-width" appearance="fill">
+        <mat-label>Favourite movie</mat-label>
+        <input matInput
+          aria-label="Favourite movie"
+          [matAutocomplete]="auto"
+          formControlName="favouriteMovie">
+        <mat-autocomplete #auto="matAutocomplete">
+          <mat-option *ngFor="let movie of filteredMovies | async" [value]="movie.Title">
+            <img *ngIf="movie.Poster" [alt]="movie.Title" class="movie-img" [src]="movie.Poster" height="25">
+            <span>{{movie.Title}}</span> |
+            <small>Year: {{movie.Year}}</small>
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+    </div>
+    <button type="submit" mat-raised-button color="primary" class="button">Submit</button>
+  </form>
+</div>
