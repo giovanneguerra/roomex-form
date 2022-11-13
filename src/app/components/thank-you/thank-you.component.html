@@ -1,0 +1,13 @@
+<div class="content">
+  <div class="content__title">
+    <h1 class="title">Congratulations<span *ngIf="user.name"> {{ user.name }}</span>!</h1>
+    <p class="subtitle">Thanks for sharing your information with us!</p>
+  </div>
+  <hr>
+  <div *ngIf="user">
+    <h3 *ngIf="user.username"><b>Username</b> - {{ user.username }}</h3>
+    <h3 *ngIf="user.country"><b>Country</b> - {{ user.country }}</h3>
+    <h3 *ngIf="user.postCode"><b>Post code</b> - {{ user.postCode }}</h3>
+    <h3 *ngIf="user.favouriteMovie"><b>Favourite move</b> - {{ user.favouriteMovie }}</h3>
+  </div>
+</div>
