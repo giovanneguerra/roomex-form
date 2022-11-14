@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Search } from 'src/app/models/search';
 import { FavouriteMovieService } from '../../services/favourite-movie.service';
-import { FormBuilder, Validators } from '@angular/forms';
+import { UntypedFormBuilder, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Profile } from '../../models/profile';
 import { map, startWith } from 'rxjs/operators';
@@ -31,7 +31,7 @@ export class EnterComponent implements OnInit {
   postcodeField = this.profileForm.get('postCode');
   favouriteMovieField = this.profileForm.get('favouriteMovie');
 
-  constructor(private router: Router, public fb: FormBuilder, private favouriteMovieService: FavouriteMovieService) {}
+  constructor(private router: Router, public fb: UntypedFormBuilder, private favouriteMovieService: FavouriteMovieService) {}
 
   private _filterMovies(value: string): Search[] {
     const filterValue = value.toLowerCase();
