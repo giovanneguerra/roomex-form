@@ -7,8 +7,8 @@ import { ThankYouComponent } from './thank-you.component';
 
 describe('ThankYouComponent', () => {
   let component: ThankYouComponent;
-  let router: Router;
   let fixture: ComponentFixture<ThankYouComponent>;
+  let router: jasmine.SpyObj<Router>;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
@@ -20,17 +20,13 @@ describe('ThankYouComponent', () => {
 
   beforeEach(() => {
     router = TestBed.get(Router);
-    location = TestBed.get(Location);
-
+    spyOn(router, 'getCurrentNavigation').and.returnValue({ extras: { state: {name: 'John', username: 'john@email.com', country: 'Ireland', postCode: '0000-001', favouriteMovie: 'Akira'}}} as any);
     fixture = TestBed.createComponent(ThankYouComponent);
-    router.initialNavigation();
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
 
   it('should create', () => {
-    router.navigate(['/thankyou']).then(() => {
-      expect(component).toBeTruthy();
-    });
+    expect(component).toBeTruthy();
   });
 });

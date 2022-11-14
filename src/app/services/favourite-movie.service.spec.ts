@@ -2,7 +2,7 @@ import { TestBed, getTestBed  } from '@angular/core/testing';
 import { HttpClientTestingModule, HttpTestingController } from '@angular/common/http/testing';
 
 import { FavouriteMovieService } from './favourite-movie.service';
-import { Search } from '../models/movie';
+import { Search } from '../models/search';
 
 describe('FavouriteMovieService', () => {
   let service: FavouriteMovieService;
