@@ -23,7 +23,7 @@
             {{country.viewValue}}
           </mat-option>
         </mat-select>
-        <mat-error *ngIf="this.profileForm.get('country')?.invalid">{{getErrorMessage('country', 'You must select a Country')}}</mat-error>
+        <mat-error *ngIf="this.profileForm.get('country')?.invalid">{{getErrorMessage('country', '', 'You must select a Country')}}</mat-error>
       </mat-form-field>
       <mat-form-field appearance="standard" >
         <mat-label>Post Code</mat-label>
